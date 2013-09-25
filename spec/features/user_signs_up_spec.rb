@@ -19,9 +19,6 @@ feature "user signs up for an account", %Q{
     fill_in "Password confirmation", with: "surprise!"
     click_button "Sign up"
 
-
-    save_and_open_page
-
     expect(page).to have_content("You have signed up successfully")
   end
 end
