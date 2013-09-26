@@ -1,24 +1,48 @@
 require 'spec_helper'
 
-feature "user signs up for an account", %Q{
-  As an visitor
-  I want to create an account
-  So I can create new bucket lists and browse others
+feature 'user signs up', %Q{
+  As an unauthenticated user
+  I want to sign up
+  So that I can make changes and view other lists
 } do
-  # Acceptance Criteria
 
-  # * I must be able to create account with my email address 
-  # * I must be able to create a password
-  # * I must be able to make a username
- 
-  scenario 'specifies information, creates an account' do 
-    visit new_user_registration_path
+# Acceptance Criteria: 
+# * I must specify a valid email address
+# * I must specify a password, and confirm that password
+# * If I do not perform the above, I get an error message
+# * If I specify valid information, I register my account and am authenticated
 
-    fill_in "Email", with: "user@example.com"
-    fill_in "Password", with: "surprise!"
-    fill_in "Password confirmation", with: "surprise!"
-    click_button "Sign up"
+  scenario 'specify valid and required information' do
+    visit root_path
+    click_link 'Sign up'
+    fill_in 'Email', with: 'user@example.com'
+    fill_in 'Password', with: 'password'
+    fill_in 'Password confirmation', with: 'password'
+    click_button 'Sign up'
 
-    expect(page).to have_content("You have signed up successfully")
+    expect(page).to have_content("You have signed up successfully.")
+    expect(page).to have_content("Sign out")
+  end
+
+  scenario 'required information is not supplied' do 
+    visit root_path
+    click_link 'Sign up'
+    click_button 'Sign up'
+
+    expect(page).to have_content("can't be blank")
+    expect(page).to_not have_content("Sign Out")
+  end
+
+    scenario 'password confirmation does not match password' do
+    visit root_path
+    click_link 'Sign up'
+
+    fill_in 'Password', with: 'password'
+    fill_in "Password confirmation", with: 'somethingDifferent'
+
+    click_button 'Sign up'
+
+    expect(page).to have_content("doesn't match")
+    expect(page).to_not have_content("Sign out")
   end
 end
