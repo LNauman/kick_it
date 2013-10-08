@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130924203346) do
+ActiveRecord::Schema.define(version: 20131005184849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "adventures", force: true do |t|
+    t.integer  "bucket_list_id",        null: false
+    t.text     "adventure_description", null: false
+    t.string   "picture"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "bucket_lists", force: true do |t|
     t.string   "title",      null: false

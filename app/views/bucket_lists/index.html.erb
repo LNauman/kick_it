@@ -12,9 +12,9 @@
   <tbody>
     <% @bucket_lists.each do |list| %>
       <tr>
-        <td><%= list.title %></td>
+        <td><%= link_to "#{list.title}", list %></td> 
+        <!-- this is thw show action -->
         <td><%= list.category %></td>
-        <td><%= link_to 'Show', list %></td>
         <td><%= link_to 'Edit', edit_bucket_list_path(list) %></td>
         <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -1,17 +1,20 @@
 class BucketListsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create, :edit, :destroy]
+  
   def new
     @bucket_list = BucketList.new
   end
 
   def index
     if current_user
+      @user = current_user
       #when bucket lists can be completed I will make 2 instance variables here so i can pass two lists to the view
       @bucket_lists = current_user.bucket_lists
       # @completed_bucket_lists = current_user.completed_bucket_lists
       @completed_bucket_lists = current_user.bucket_lists
     else
       @bucket_lists = BucketList.all
+      @completed_bucket_lists = BucketList.all
     end
   end
 
@@ -25,6 +28,11 @@ class BucketListsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def show
+    @bucket_list = BucketList.find(params[:id])
+  
   end
 
   protected

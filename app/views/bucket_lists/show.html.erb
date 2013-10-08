@@ -1,0 +1,15 @@
+<% if @bucket_list %>
+<p>
+  <strong>Bucket List:</strong>
+  <%= @bucket_list.title %>
+</p>
+
+<% @bucket_list.adventures.each do |adventure| %>
+  <li><%= adventure.adventure_description %></li><br>
+<% end %>
+<% end %>
+
+<%= link_to 'Add item', new_bucket_list_adventure_path(@bucket_list) %>
+
+
+
