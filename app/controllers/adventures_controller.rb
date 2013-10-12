@@ -18,6 +18,20 @@ class AdventuresController < ApplicationController
     end
   end
 
+  def update
+    @adventure = Adventure.find(params[:id])
+
+    if @adventure.update_attributes!( adventure_params )
+      if @adventure.picture
+        @adventure.complete
+      end
+      redirect_to bucket_list_path(@adventure.bucket_list), notice: 'Photo Updated'
+    else
+      flash[:alert] = 'Please provide a photo'
+      render :show
+    end
+  end
+
   def index
     if params[:bucket_list_id]
       @bucket_list = BucketList.find( params[:bucket_list_id] )
@@ -31,7 +45,8 @@ class AdventuresController < ApplicationController
   protected
   def adventure_params
     params.require(:adventure).permit(
-      :adventure_description
+      :adventure_description,
+      :picture
       )
   end
 end

@@ -13,7 +13,7 @@ feature "user can add new list items", %Q{
   # * I must be able to save this list item to the list I added it to
 
   let(:user) {FactoryGirl.create(:user)}
-  let(:bucket_list) {FactoryGirl.create(:bucket_list, user_id: user.id)}
+  let!(:bucket_list) {FactoryGirl.create(:bucket_list, user_id: user.id)}
 
   scenario 'specifies valid information, creates new bucket list item' do
     
@@ -66,7 +66,6 @@ feature "user can add new list items", %Q{
     visit "/users/#{user.id}/bucket_lists/#{bucket_list.id}/"
     
     click_on 'Add item'
-    save_and_open_page
     click_on 'Cancel'
 
 

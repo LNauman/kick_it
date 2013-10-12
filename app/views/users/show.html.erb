@@ -1,3 +1,5 @@
 <p> Welcome to your profile page, homie</p>
 <%= link_to 'My Bucket Lists!', user_bucket_lists_path(@user) %>
 <%= link_to "New Bucket List", new_bucket_list_path %>
+
+<%= image_tag current_user.picture.url %>

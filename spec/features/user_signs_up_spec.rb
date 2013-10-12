@@ -20,6 +20,8 @@ feature 'user signs up', %Q{
     fill_in 'Email', with: 'user@example.com'
     fill_in 'Password', with: 'password'
     fill_in 'Password confirmation', with: 'password'
+    fill_in 'Username', with: 'lnaunau'
+    page.attach_file('user_picture', Rails.root + 'spec/support/images/stevie-nick.jpg')
     
     click_button 'Sign up'
 

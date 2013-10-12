@@ -26,7 +26,7 @@
 
 <%= link_to 'New List', new_bucket_list_path %>
 
-<% if @completed_bucket_lists.exists? %>
+<% if @completed_bucket_lists.count != 0 %>
 
 <h1>Trophy Case</h1>
   <table>

@@ -8,13 +8,12 @@ class BucketListsController < ApplicationController
   def index
     if current_user
       @user = current_user
-      #when bucket lists can be completed I will make 2 instance variables here so i can pass two lists to the view
       @bucket_lists = current_user.bucket_lists
-      # @completed_bucket_lists = current_user.completed_bucket_lists
-      @completed_bucket_lists = current_user.bucket_lists
+      @completed_bucket_lists = @user.completed_lists
+
     else
       @bucket_lists = BucketList.all
-      @completed_bucket_lists = BucketList.all
+      @completed_bucket_lists = BucketList.completed
     end
   end
 
@@ -24,7 +23,6 @@ class BucketListsController < ApplicationController
     if @bucket_list.save
       flash[:notice] = "Your bucket list is created! Add some list items!"
       redirect_to '/bucket_lists'
-      #make this go to the dashboard page wooo
     else
       render 'new'
     end
@@ -32,8 +30,16 @@ class BucketListsController < ApplicationController
 
   def show
     @bucket_list = BucketList.find(params[:id])
-  
   end
+
+  # def destroy
+  #   if current_user
+  #     @user = current_user
+  #     @bucket_list = BucketList.find(params[:id])
+  #     @bucket_list.destroy
+  #     redirect_to "/users/#{user.id}/bucket_lists/"
+  #   end
+  # end 
 
   protected
 

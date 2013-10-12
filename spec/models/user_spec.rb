@@ -2,8 +2,12 @@ require 'spec_helper'
 
 describe User do
   it { should have_valid(:email).when('lindsay@gmail.com', 'hi@aol.com') }
-  it { should_not have_valid(:email).when('', nil, 'hellooo')}   
-  it { should have_many :bucket_lists}
+  it { should_not have_valid(:email).when('', nil, 'hellooo') }   
+  
+  it { should have_valid(:username).when('lnaunau', 'heyyo88') }
+  it { should_not have_valid(:username).when('', nil) }
+
+  it { should have_many :bucket_lists }
 
   it 'has matching password confirmation for the password' do
     user = User.new

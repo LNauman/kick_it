@@ -47,6 +47,9 @@ end
 gem 'carrierwave'
 gem 'fog'
 gem 'rmagick'
+gem 'simple_form'
+gem 'state_machine'
+gem 'ransack'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
