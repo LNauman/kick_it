@@ -1,0 +1,6 @@
+<p>
+<% bucket_list = BucketList.find(activity.trackable_id) %>
+
+<%= "This bucketlist was created by #{bucket_list.user.username}" %>
+<%= link_to "See this bucket_list", bucket_list_path(bucket_list) %>
+</p>

@@ -1,0 +1,25 @@
+<h1>All Da Users</h1>
+
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :username_cont %>
+    <%= f.text_field :username_cont %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Search' %>
+  </div>
+<% end %>
+
+<% if @users.count == 0 %>
+  <p>That user does not exist!</p>
+<% end %>
+
+<table id="users">
+<% @users.each do |user| %>
+  <tr>
+    <td><%= link_to(user.username, user) %></td>
+    <td><%= image_tag user.picture.url %></td>
+  </tr>
+<% end %>
+</table>

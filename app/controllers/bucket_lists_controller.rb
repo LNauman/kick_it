@@ -32,14 +32,14 @@ class BucketListsController < ApplicationController
     @bucket_list = BucketList.find(params[:id])
   end
 
-  # def destroy
-  #   if current_user
-  #     @user = current_user
-  #     @bucket_list = BucketList.find(params[:id])
-  #     @bucket_list.destroy
-  #     redirect_to "/users/#{user.id}/bucket_lists/"
-  #   end
-  # end 
+  def destroy
+    if current_user
+      @user = current_user
+      @bucket_list = BucketList.find(params[:id])
+      @bucket_list.destroy
+      redirect_to "/users/#{@user.id}/bucket_lists/"
+    end
+  end 
 
   protected
 

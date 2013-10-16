@@ -1,9 +1,11 @@
 KickIt::Application.routes.draw do
+  resources :activities
   resources :bucket_lists
+  resources :adventures
   
   devise_for :users
 
-  resources :users, only: [:show] do
+  resources :users, only: [:show, :index] do
     resources :bucket_lists
   end
   

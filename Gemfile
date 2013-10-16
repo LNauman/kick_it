@@ -50,6 +50,8 @@ gem 'rmagick'
 gem 'simple_form'
 gem 'state_machine'
 gem 'ransack'
+gem 'public_activity'
+gem 'anjlab-bootstrap-rails', '~> 3.0.0.3', :require => 'bootstrap-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

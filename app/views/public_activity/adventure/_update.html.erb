@@ -1,0 +1,10 @@
+<% adventure = Adventure.find(activity.trackable_id) %>
+<p>
+<%= link_to "#{adventure.user.username}", user_path(adventure.user_id) %>
+<% if adventure.state = 'completed' %>
+  <%= link_to "just completed #{adventure.adventure_description}", bucket_list_path(adventure.bucket_list_id) %>
+<% else %>
+  <%= link_to "updated #{adventure.adventure_description}", bucket_list_path(adventure.bucket_list_id) %>
+<% end %>
+</p>
+

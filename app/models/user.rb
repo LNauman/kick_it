@@ -22,5 +22,4 @@ class User < ActiveRecord::Base
     end
     @completed_bucket_lists
   end
-
 end

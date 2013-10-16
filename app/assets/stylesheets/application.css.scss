@@ -1,0 +1,23 @@
+@import "twitter/bootstrap";
+@import "flatly";
+
+
+.adventure-box {
+  width: 33%;
+  float: left;
+  padding: 15px;
+
+  img { max-width: 100%; }
+}
+
+.adventure-box-inner {
+  position: relative;
+  height: 300px;
+  background: pink;
+}
+
+.adventure-box-form {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}

@@ -1,4 +1,7 @@
 class Adventure < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+
   mount_uploader :picture, PictureUploader
   
   state_machine :state, :initial => :incomplete do

@@ -33,6 +33,7 @@ class AdventuresController < ApplicationController
   end
 
   def index
+    @all_adventures = Adventure.all
     if params[:bucket_list_id]
       @bucket_list = BucketList.find( params[:bucket_list_id] )
       @adventures = Adventure.where( bucket_list_id: @bucket_list.id )

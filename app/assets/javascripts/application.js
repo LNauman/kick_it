@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require twitter/bootstrap
 //= require_tree .
+
+
 $(document).ready(function() {
     $('.notice').fadeOut(5000);
 });

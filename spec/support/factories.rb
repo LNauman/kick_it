@@ -16,7 +16,7 @@ FactoryGirl.define do
     sequence(:email) {|n| "person#{n}@example.com" }
     password "password"
     password_confirmation "password"
-    username "lnaunau"
+    sequence(:username) {|n|"username #{n}"}
     picture Rack::Test::UploadedFile.new(File.open(File.join( Rails.root, 'spec/support/images/stevie-nick.jpg')))
   end
 

@@ -1,30 +1,35 @@
 <% if @bucket_list %>
-<p>
-  <strong>Bucket List:</strong>
-  <%= @bucket_list.title %>
-</p>
+  <p>
+    <strong><%=link_to 'Bucket List:', bucket_lists_path %></strong>
+    <%= @bucket_list.title %>
+  </p>
 
-<% @bucket_list.adventures.each do |adventure| %>
-  <li><%= adventure.adventure_description %>
-  <% if adventure.state == "incomplete" %>
-  <%= simple_form_for [@bucket_list, adventure] do |f| %>
-    
-    <%= f.file_field :picture %>
-
-    <%= f.submit 'Finish adventure!' %>
-
+  <% @bucket_list.adventures.each do |adventure| %>
+    <div class="adventure-box">
+      <div class="adventure-box-inner">
+        <%= adventure.adventure_description %>
+        
+        <% if adventure.state == "incomplete" %>
+          <%= simple_form_for [@bucket_list, adventure],
+            html: { class: "adventure-box-form" } do |f| %>
+            
+            <%= f.file_field :picture %>
+            <%= f.submit 'Finish adventure!' %>
+          <% end %>
+        <% else %>
+          <%= image_tag adventure.picture.url %>
+        <% end %>
+      </div>
+    </div>
   <% end %>
-  <% else %>
-  <%= image_tag adventure.picture.url %>
+
+  <% unless @bucket_list.complete? %>
+    <%= link_to 'Add item', new_bucket_list_adventure_path(@bucket_list) %>
+  <% end %>
 <% end %>
 
-</li><br>
-<% end %>
-<% end %>
 
-<%= link_to 'Add item', new_bucket_list_adventure_path(@bucket_list) %>
-
-// <script>
+ <script>
 //   function handleFileSelect(evt) {
 //     var files = evt.target.files; // FileList object
 
