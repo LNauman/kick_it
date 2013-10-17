@@ -34,6 +34,7 @@ group :development, :test do
   gem 'valid_attribute'
   gem 'factory_girl'
   gem 'shoulda'
+  gem 'dotenv'
 
   gem 'launchy'
   gem 'pry-rails'
