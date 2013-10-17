@@ -7,7 +7,9 @@
   <% @bucket_list.adventures.each do |adventure| %>
     <div class="adventure-box">
       <div class="adventure-box-inner">
-        <%= adventure.adventure_description %>
+        <p id="description">
+          <%= adventure.adventure_description %>
+        </p>
         
         <% if adventure.state == "incomplete" %>
           <%= simple_form_for [@bucket_list, adventure],
@@ -17,9 +19,10 @@
             <%= f.submit 'Finish adventure!' %>
           <% end %>
         <% else %>
-          <%= image_tag adventure.picture.url %>
-        <% end %>
-      </div>
+        <div class="adventipic">
+         <%= image_tag(adventure.picture.url) %>
+        </div>
+      <% end %>  
     </div>
   <% end %>
 
