@@ -17,6 +17,16 @@
 //= require_tree .
 
 
+
+
+
+
+
 $(document).ready(function() {
     $('.notice').fadeOut(5000);
 });
+
+
+// $('.carousel').carousel({
+//   interval: 100
+// });
