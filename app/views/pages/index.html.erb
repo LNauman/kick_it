@@ -1,9 +1,12 @@
-<h1> What do you want to do before you... </h1>
+<div class="browse-advent-link">
+  <button type="button" class="btn btn-primary btn-lg"><%= link_to 'Browse Adventures', adventures_path %></button> 
+</div>
 
+<h1> What do you want to do before you... </h1>
 
   <div class="row-fluid">
     <div class="span9">
-      <div id="myCarousel" class="carousel slide">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
       
         <div class="carousel-inner">
           <div class="item active">
@@ -63,8 +66,6 @@
 
 
 
-  <div class="browse-advent-link">
-    <%= link_to 'Browse Adventures', adventures_path %>
-  </div>
+
 
 

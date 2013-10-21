@@ -1,12 +1,17 @@
 <p> Welcome to your profile page, homie</p>
+
+<div class="prof-pic">
+  <%= image_tag @user.picture.url %>
+</div>
+
 <% if @user == current_user %>
-  <%= link_to 'My Bucket Lists!', user_bucket_lists_path(@user) %>
-  <%= link_to "New Bucket List", new_bucket_list_path %>
+  <button type="button" class="btn btn-default btn-lg"><%= link_to 'My Bucket Lists!', user_bucket_lists_path(@user) %></button>
+  <button type="button" class="btn btn-default btn-lg"><%= link_to "New Bucket List", new_bucket_list_path %></button>
+  <button type="button" class="btn btn-default btn-lg"><%= link_to "Browse all Users", users_path %></button>
 
 <% end %>
 
-<%= image_tag @user.picture.url %>
 
 <%= render_activities(@activities) %>
 
-<%= link_to "Browse all Users", users_path %>
+
