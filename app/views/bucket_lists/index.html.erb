@@ -1,51 +1,47 @@
-<h1>All the Bucket Lists</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Category</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <% @bucket_lists.each do |list| %>
-      <% if list.complete? == false %>
-        <tr>
-          <td><%= link_to "#{list.title}", list %></td> 
-          <!-- this is thw show action -->
-         <td><%= list.category %></td>
-          <td><%= link_to 'Edit', edit_bucket_list_path(list) %></td>
-          <td><%= link_to 'x', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New List', new_bucket_list_path %>
-
-<% if @completed_bucket_lists.count != 0 %>
-
-<h1>Trophy Case</h1>
+<div class="unfinished"><h1>Unfinished Business</h1>
   <table>
     <thead>
       <tr>
         <th>Title</th>
-        <th>Category</th>
       </tr>
     </thead>
 
     <tbody>
-      <% @completed_bucket_lists.each do |list| %>
-        <tr>
-          <td><%= list.title %></td>
-          <td><%= list.category %></td>
-          <td><%= link_to 'Show', list %></td>
-        </tr>
+        <% @bucket_lists.each do |list| %>
+        <% if list.complete? == false %>
+          <tr>
+            <td class="list-item"><%= link_to "#{list.title}", list %></td> 
+            <!-- this is thw show action -->
+            <td><%= link_to 'Edit', edit_bucket_list_path(list) %></td>
+            <td><%= link_to 'x', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
-<% end %>
+
+<%= link_to 'New List', new_bucket_list_path %>
+<div>
+
+<% if @completed_bucket_lists.count != 0 %>
+
+<div class="finished">
+  <h1>Completed</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @completed_bucket_lists.each do |list| %>
+          <tr>
+            <td class="list-item"><%= list.title %></td>
+            <td><%= link_to 'Show', list %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

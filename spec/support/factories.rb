@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :bucket_list do
     title 'Awesome'
-    category 'Life'
     user_id 1
   
     factory :bucket_list_with_adventures

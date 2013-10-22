@@ -26,14 +26,12 @@ feature "user creates a new list", %Q{
     visit new_bucket_list_path
 
     fill_in 'Title', with: 'Philly List'
-    select 'City', from: 'Category'
-    
+
     click_button 'Save List!'
 
     expect(page).to have_content('Your bucket list is created! Add some list items!')
     
     expect(BucketList.last.user).to eql(user)
-    expect(BucketList.last.category).to eql('City')
   end
 
   scenario 'user does not enter title, gets error message' do
@@ -41,7 +39,6 @@ feature "user creates a new list", %Q{
     visit new_bucket_list_path
 
     fill_in 'Title', with: ''
-    select 'City', from: 'Category'
     
     click_button 'Save List!'
 

@@ -45,8 +45,7 @@ class BucketListsController < ApplicationController
 
   def reg_params
     params.require(:bucket_list).permit(
-      :title,
-      :category
+      :title
       )
   end
 
