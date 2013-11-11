@@ -1,0 +1,51 @@
+<h1>All the Bucket Lists</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bucket_lists.each do |list| %>
+      <tr>
+        <td><%= list.title %></td>
+        <td><%= list.category %></td>
+        <td><%= link_to 'Show', list %></td>
+        <td><%= link_to 'Edit', edit_bucket_list_path(list) %></td>
+        <td><%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Create New List', new_bucket_list_path %>
+
+<% if @completed_bucket_lists.exists? %>
+
+<h1>Trophy Case</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @completed_bucket_lists.each do |list| %>
+        <tr>
+          <td><%= list.title %></td>
+          <td><%= list.category %></td>
+          <td><%= link_to 'Show', list %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
